@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import Loader from './components/Loader';
+import Movie from './components/Movie';
 
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_FEATURE_API_KEY}`;
 
@@ -29,7 +30,16 @@ const App = () => {
       <Navbar />
       <div className='container'>
         <Search />
-        {loading ? <Loader /> : <h1>Movies</h1>}
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className='movie-container'>
+            {movies.length > 0 &&
+              movies.map((movie) => (
+                <Movie key={movie.id} {...movie} />
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );

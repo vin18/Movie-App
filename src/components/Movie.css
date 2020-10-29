@@ -1,0 +1,56 @@
+.movie {
+  background-color: #373b69;
+  width: 30rem;
+  margin: 1.5rem;
+  border-radius: 3px;
+  box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.movie:hover {
+  transform: translateY(-3px);
+}
+
+.movie img {
+  object-fit: cover;
+  height: 450px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.movie-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 1rem;
+  color: #fff;
+}
+
+.movie-info h3 {
+  font-size: 2rem;
+  color: #ddd;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-right: 1rem;
+}
+
+.tag {
+  background-color: #22254b;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.tag.green {
+  color: rgb(9, 151, 9);
+}
+
+.tag.orange {
+  color: orange;
+}
+
+.tag.red {
+  color: red;
+}

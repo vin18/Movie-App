@@ -1,7 +1,12 @@
-/* Utilites */
 .container {
-  max-width: 100rem;
+  max-width: 140rem;
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
+}
+
+.movie-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }

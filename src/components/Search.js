@@ -16,7 +16,7 @@ const Search = () => {
         <input
           type='text'
           name='text'
-          placeholder='Search a movie'
+          placeholder='Search movie'
           value={text}
           onChange={(e) => setText(e.target.value)}
           className='search__input'
