@@ -1,0 +1,13 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: blueviolet;
+  color: #fff;
+  padding: 1rem 2rem;
+  z-index: 1;
+}
+
+.navbar h1 {
+  font-size: 4rem;
+}
