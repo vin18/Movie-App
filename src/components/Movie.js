@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Movie.css';
 
 let IMG_API = 'https://image.tmdb.org/t/p/w1280';
@@ -33,6 +34,19 @@ const Movie = ({ title, poster_path, vote_average }) => {
       </div>
     </div>
   );
+};
+
+Movie.propTypes = {
+  title: PropTypes.string.isRequired,
+  poster_path: PropTypes.string.isRequired,
+  vote_average: PropTypes.number.isRequired,
+};
+
+Movie.defaultProps = {
+  title: 'No Movie found',
+  poster_path:
+    'https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+  vote_average: 404,
 };
 
 export default Movie;

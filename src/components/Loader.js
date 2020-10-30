@@ -10,9 +10,4 @@ const Loader = () => {
   );
 };
 
-const center = {
-  display: 'grid',
-  placeItems: 'center',
-};
-
 export default Loader;

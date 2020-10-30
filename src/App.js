@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import Loader from './components/Loader';
@@ -11,11 +13,16 @@ const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${process
 
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchMovies(FEATURED_API);
-  }, []);
+    if (search) {
+      fetchMovies(SEARCH_API + search);
+    } else {
+      fetchMovies(FEATURED_API);
+    }
+  }, [search]);
 
   const fetchMovies = async (API) => {
     setLoading(true);
@@ -26,10 +33,10 @@ const App = () => {
   };
 
   return (
-    <div>
+    <Router>
       <Navbar />
       <div className='container'>
-        <Search />
+        <Search setSearch={setSearch} />
         {loading ? (
           <Loader />
         ) : (
@@ -41,7 +48,7 @@ const App = () => {
           </div>
         )}
       </div>
-    </div>
+    </Router>
   );
 };
 

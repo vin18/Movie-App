@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import './Search.css';
 
-const Search = () => {
+const Search = ({ setSearch }) => {
   const [text, setText] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(`Submit`);
-    setText('');
+    setSearch(text);
   };
 
   return (
     <div className='search'>
       <form onSubmit={onSubmit}>
+        <i className='fas fa-search'></i>
         <input
           type='text'
           name='text'

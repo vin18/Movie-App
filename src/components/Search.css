@@ -4,14 +4,22 @@
   margin-bottom: 3rem;
 }
 
+.search i {
+  margin-right: -4rem;
+  position: relative;
+  z-index: 1;
+  color: #777;
+  font-size: 2rem;
+}
+
 .search__input {
   font-family: inherit;
-  font-size: inherit;
-  color: inherit;
+  font-size: 2rem;
   margin-top: 3rem;
   margin: 0 auto;
   border-radius: 10rem;
   padding: 1.5rem 3rem;
+  padding-left: 4.5rem;
   background-color: rgb(223, 247, 255);
   width: 20%;
   letter-spacing: 0.05rem;
@@ -22,10 +30,11 @@
 .search__input:focus {
   width: 30%;
   outline: none;
+  color: #000;
 }
 
 .search__input::placeholder {
   letter-spacing: 0.03rem;
   font-weight: 100;
-  color: #333;
+  color: #000;
 }
