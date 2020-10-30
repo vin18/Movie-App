@@ -7,7 +7,7 @@ import Movie from './components/Movie';
 
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_FEATURE_API_KEY}`;
 
-const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${process.env.REACT_APP_SEARCH_API_KEY}`;
+const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${process.env.REACT_APP_SEARCH_API_KEY}&query=`;
 
 const App = () => {
   const [movies, setMovies] = useState([]);
