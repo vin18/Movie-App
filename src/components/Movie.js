@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './Movie.css';
 
@@ -14,24 +15,32 @@ const setVoteClass = (vote) => {
   }
 };
 
-const Movie = ({ title, poster_path, vote_average }) => {
+const Movie = ({
+  title,
+  poster_path,
+  vote_average,
+  id,
+  setMovie,
+}) => {
   return (
     <div className='movie'>
-      <img
-        src={
-          poster_path
-            ? IMG_API + poster_path
-            : 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60'
-        }
-        alt={title}
-      />
+      <Link to={`/search/${id}`} onClick={() => setMovie(id)}>
+        <img
+          src={
+            poster_path
+              ? IMG_API + poster_path
+              : 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60'
+          }
+          alt={title}
+        />
 
-      <div className='movie-info'>
-        <h3>{title}</h3>
-        <span className={`tag ${setVoteClass(vote_average)}`}>
-          {vote_average}
-        </span>
-      </div>
+        <div className='movie-info'>
+          <h3>{title}</h3>
+          <span className={`tag ${setVoteClass(vote_average)}`}>
+            {vote_average}
+          </span>
+        </div>
+      </Link>
     </div>
   );
 };

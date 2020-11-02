@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 import Loader from './components/Loader';
 import Movie from './components/Movie';
+import MovieItem from './components/MovieItem';
 
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_FEATURE_API_KEY}`;
 
@@ -13,6 +18,7 @@ const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${process
 
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [movieInfo, setMovieInfo] = useState({});
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -36,17 +42,34 @@ const App = () => {
     <Router>
       <Navbar />
       <div className='container'>
-        <Search setSearch={setSearch} />
-        {loading ? (
-          <Loader />
-        ) : (
-          <div className='movie-container'>
-            {movies.length > 0 &&
-              movies.map((movie) => (
-                <Movie key={movie.id} {...movie} />
-              ))}
-          </div>
-        )}
+        <Switch>
+          <Route path='/' exact>
+            <Search setSearch={setSearch} />
+            {loading ? (
+              <Loader />
+            ) : (
+              <div className='movie-container'>
+                {movies.length > 0 &&
+                  movies.map((movie) => (
+                    <Movie
+                      key={movie.id}
+                      {...movie}
+                      setMovie={setMovieInfo}
+                    />
+                  ))}
+              </div>
+            )}
+          </Route>
+
+          <Route path={`/search/:id`}>
+            <MovieItem
+              movie={
+                movies.length > 0 &&
+                movies.find((m) => m.id === movieInfo)
+              }
+            />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );

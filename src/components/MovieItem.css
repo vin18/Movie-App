@@ -1,0 +1,51 @@
+.movie-item {
+  padding: 5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-btn {
+  color: #777;
+  font-size: 2rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  margin-left: 3rem;
+  background-color: whitesmoke;
+  display: inline-block;
+}
+
+.back-btn i {
+  margin-right: 0.2rem;
+}
+
+.movie-item__image-container {
+  box-shadow: 0 0.75rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.movie-item__image {
+  flex: 1;
+  width: 40rem;
+  height: 50rem;
+}
+
+.movie-item__info {
+  padding: 3rem;
+  flex: 1;
+}
+
+.movie-item span {
+  color: brown;
+}
+
+.movie-item__info h2 {
+  color: blue;
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+
+.movie-item__info p {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
