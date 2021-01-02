@@ -12,15 +12,25 @@ import Loader from './components/Loader';
 import Movie from './components/Movie';
 import MovieItem from './components/MovieItem';
 
-const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_FEATURE_API_KEY}`;
+let featureApiKey;
+let searchApiKey;
 
-const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${process.env.REACT_APP_SEARCH_API_KEY}&query=`;
+if (process.env.NODE_ENV !== 'production') {
+  featureApiKey = `${process.env.REACT_APP_FEATURE_API_KEY}`;
+  searchApiKey = `${process.env.REACT_APP_SEARCH_API_KEY}`;
+} else {
+  featureApiKey = `${process.env.FEATURE_API_KEY}`;
+  searchApiKey = `${process.env.SEARCH_API_KEY}`;
+}
+
+const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${featureApiKey}`;
+const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${process.env.REACT_APP_SEARCH_API_KEY}&query=${searchApiKey}`;
 
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [movieInfo, setMovieInfo] = useState({});
   const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (search) {
